@@ -1,0 +1,5 @@
+@media screen and (max-width: 767px) {
+  .profile__info {
+    text-align: center;
+  }
+}

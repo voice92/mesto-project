@@ -1,0 +1,16 @@
+.popup__submit-button {
+    background-color: black;
+    color: #fff;
+    width: 100%;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 18px;
+    padding: 14px;
+    margin-top: 62px;
+}
+
+@media screen and (max-width:767px) {
+    .popup__submit-button {
+        font-size: 14px;
+    }
+}

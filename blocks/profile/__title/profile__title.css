@@ -1,0 +1,23 @@
+.profile__title {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    align-items: center;
+    gap: 18px;
+    color: white;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 1.15;
+    margin-top: 0;
+    margin-bottom: 16px;
+    text-rendering: optimizeLegibility;
+}
+
+@media screen and (max-width: 767px) {
+    .profile__title {
+        font-weight: 500;
+        font-size: 27px;
+        gap: 10px;
+        text-align: center;
+    }
+}
