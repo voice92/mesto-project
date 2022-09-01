@@ -1,15 +1,14 @@
 .element__title {
-    font-family: 'Inter';
-    
-    font-style: normal;
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 29px;
-    margin: 0;
-    display: block;
-    overflow: hidden;
-    max-width: 219px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 0;
+  display: block;
+  overflow: hidden;
+  max-width: 219px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
-  }
+}

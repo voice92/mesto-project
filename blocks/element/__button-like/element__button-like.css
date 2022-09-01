@@ -20,6 +20,6 @@
     align-self: center;
   }
   
-  .element__button:hover {
+  .element__button-like:hover {
     opacity: .5;
   }
