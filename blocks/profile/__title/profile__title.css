@@ -1,9 +1,4 @@
 .profile__title {
-    display: grid;
-    grid-auto-flow: column;
-    justify-content: start;
-    align-items: center;
-    gap: 18px;
     color: white;
     font-weight: 500;
     font-size: 42px;

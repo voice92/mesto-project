@@ -1,3 +1,8 @@
+.profile__info {
+  overflow: hidden;
+  max-width: 100%;
+}
+
 @media screen and (max-width: 767px) {
   .profile__info {
     text-align: center;

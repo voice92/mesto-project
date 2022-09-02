@@ -79,10 +79,10 @@
             <div class="popup">
                 <div class="popup__container">
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <form class="popup__form" action="#" method="post">
+                    <form class="popup__form" action="#" name="profile" method="post">
                         <div class="popup__form-inputs">
-                            <input class="popup__input" type="text" name="Название профиля" value="Жак-Ив Кусто" />
-                            <input class="popup__input" type="text" name="Краткое описание" value="Исследователь океана" />
+                            <input class="popup__input" type="text" name="name" value="Жак-Ив Кусто" />
+                            <input class="popup__input" type="text" name="description" value="Исследователь океана" />
                         </div>
                         <button class="popup__submit-button">Сохранить</button>
                     </form>
@@ -93,5 +93,13 @@
         <footer class="footer">
             <p class="footer__copyright">&copy;2022 Mesto Russia</p>
         </footer>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelector('.popup__close-button').addEventListener('click', () => {
+                    document.querySelector('.popup').remove();
+                })
+            })
+        </script>
     </body>
 </html>
