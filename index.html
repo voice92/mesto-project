@@ -17,7 +17,9 @@
                 <img src="./images/kusto.png" alt="Аватар" class="profile__avatar" />
                 <div class="profile__info">
                     <h1 class="profile__title">
-                        Жак-Ив Кусто
+                        <span class="profile__title-text">
+                            Жак-Ив КустоЖак-Ив КустоЖак-Ив КустоЖак-Ив КустоЖак-Ив КустоЖак-Ив КустоЖак-Ив КустоЖак-Ив Кусто
+                        </span>
                         <button class="profile__button-edit" type="button" title="Редактирование профиля"></button>
                     </h1>
                     <p class="profile__subtitle">Исследователь океана</p>
@@ -93,13 +95,4 @@
         <footer class="footer">
             <p class="footer__copyright">&copy;2022 Mesto Russia</p>
         </footer>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                document.querySelector('.popup__close-button').addEventListener('click', () => {
-                    document.querySelector('.popup').remove();
-                })
-            })
-        </script>
-    </body>
 </html>
