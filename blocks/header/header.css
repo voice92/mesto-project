@@ -1,28 +1,28 @@
 .header {
-    position: relative;
-    padding: 45px 20px 40px;
-    max-width: 880px;
-    display: flex;
-    margin: 0 auto;
-    justify-content: flex-start;
+  position: relative;
+  padding: 45px 20px 40px;
+  max-width: 880px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: flex-start;
 }
 
 .header::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 20px;
-    right: 20px;
-    display: block;
-    height: 1px;
-    background-color: #545454;
-    opacity: 0.7;
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 20px;
+  right: 20px;
+  display: block;
+  height: 1px;
+  background-color: #545454;
+  opacity: 0.7;
 }
 
-@media screen and (max-width:767px) {
-    .header::after {
-        left:0;
-        right: 0;
-        width: 100%;
-    }
+@media screen and (max-width: 767px) {
+  .header::after {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
 }

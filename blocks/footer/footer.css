@@ -1,12 +1,12 @@
 .footer {
-    position: relative;
-    padding: 67px 20px 60px;
-    max-width: 880px;
-    margin: 0 auto;
+  position: relative;
+  padding: 67px 20px 60px;
+  max-width: 880px;
+  margin: 0 auto;
 }
 
-@media screen and (max-width:767px) {
-    .footer {
-        padding: 48px 20px 36px;
-    }
+@media screen and (max-width: 767px) {
+  .footer {
+    padding: 48px 20px 36px;
+  }
 }

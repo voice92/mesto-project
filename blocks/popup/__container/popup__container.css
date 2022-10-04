@@ -1,17 +1,17 @@
 .popup__container {
-    box-sizing: border-box;
-    max-width: 430px;
-    width: 100%;
-    position: relative;
-    padding: 36px;
-    background-color: #fff;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
+  box-sizing: border-box;
+  max-width: 430px;
+  width: 100%;
+  position: relative;
+  padding: 36px;
+  background-color: #fff;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
 }
 
-@media screen and (max-width:767px) {
-    .popup__container {
-        padding: 25px 22px;
-        max-width: 282px;
-    }
+@media screen and (max-width: 767px) {
+  .popup__container {
+    padding: 25px 22px;
+    max-width: 282px;
+  }
 }

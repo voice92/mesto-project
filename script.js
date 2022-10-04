@@ -75,7 +75,6 @@ cardsContainer.addEventListener('click', function (event) {
 })
 
 
-
 addButton.addEventListener('click', function () {
   cardPopup.classList.add(OPEN_CLASS_NAME)
 })
@@ -102,7 +101,7 @@ editButton.addEventListener('click', function () {
   editPopup.classList.add(OPEN_CLASS_NAME)
 })
 
-closeButton.addEventListener('click', function() {
+closeButton.addEventListener('click', function () {
   editPopup.classList.remove(OPEN_CLASS_NAME)
 
   nameInput.value = nameElement.textContent.trim()
