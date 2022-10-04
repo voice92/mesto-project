@@ -11,15 +11,15 @@
     cursor: pointer;
     flex-shrink: 0;
   }
-  
-  .element__button-like:active {
-    background: url(../../../images/like.svg);
+
+  .element__button-like_liked {
+    background: url(../../../images/liked.svg);
     background-repeat: no-repeat;
     outline: 0;
     border: 0;
     align-self: center;
   }
-  
+
   .element__button-like:hover {
     opacity: .5;
   }

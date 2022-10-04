@@ -1,4 +1,5 @@
 .element {
+  position: relative;
   background: white;
   border-radius: 10px;
   list-style: none;
