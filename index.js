@@ -40,8 +40,7 @@ const initialCards = [
     name: 'Камчатка',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
-  {
-    name: 'Холмогорский район',
+  { name: 'Холмогорский район',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
@@ -67,6 +66,7 @@ function createCard(name, link) {
 
   elementTitle.textContent = name
   elementImage.src = link
+  elementImage.alt = name
 
   elementDeleteButton.addEventListener('click', deleteElement)
   elementLikeButton.addEventListener('click', toggleLike)
@@ -85,7 +85,9 @@ function toggleLike(event) {
 
 function openImagePopup(event) {
   const targetElement = event.target.closest('.element')
-  popupImgElement.src = targetElement.querySelector('img').src
+  popupImgElement.src = event.target.src
+  popupImgElement.alt = event.target.alt
+
   popupTitleElement.textContent = targetElement.querySelector('.element__title').textContent
   openPopup(imagePopup)
 }
@@ -118,8 +120,8 @@ cardPopupForm.addEventListener('submit', function (event) {
 
   const card = createCard(cardNameInput.value, cardLinkInput.value)
 
-  cardsContainer.append(card)
-  cardPopup.classList.remove(POPUP_ACTIVE_CLASS_NAME)
+  cardsContainer.prepend(card)
+  closePopup(cardPopup)
   cardNameInput.value = ''
   cardLinkInput.value = ''
 })
@@ -130,5 +132,5 @@ profileForm.addEventListener('submit', function (event) {
   profileTitle.textContent = profileNameInput.value
   profileDesc.textContent = profileDescInput.value
 
-  profilePopup.classList.remove(POPUP_ACTIVE_CLASS_NAME)
+  closePopup(profilePopup)
 })
