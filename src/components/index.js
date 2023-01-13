@@ -1,3 +1,5 @@
+import './styles/index.css';
+
 const profilePopup = document.querySelector('#popup-edit')
 const profilePopupTrigger = document.querySelector('.profile__button-edit')
 const profileTitle = document.querySelector('.profile__title-text')
@@ -134,4 +136,3 @@ profileForm.addEventListener('submit', function (event) {
 
   closePopup(profilePopup)
 })
-

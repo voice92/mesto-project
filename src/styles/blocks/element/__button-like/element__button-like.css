@@ -2,7 +2,7 @@
   margin: 0;
   width: 22px;
   height: 22px;
-  background: url(../../../images/like.svg);
+  background: url(../../../../../images/like.svg);
   background-repeat: no-repeat;
   outline: 0;
   border: 0;
@@ -13,7 +13,7 @@
 }
 
 .element__button-like_liked {
-  background: url(../../../images/liked.svg);
+  background: url(../../../../../images/liked.svg);
   background-repeat: no-repeat;
   outline: 0;
   border: 0;
