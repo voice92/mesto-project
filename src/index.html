@@ -33,10 +33,38 @@
   <div class="popup" id="popup-edit">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" action="#" name="profile" method="post">
+      <form class="popup__form" action="#" name="profile" method="post" novalidate>
         <div class="popup__form-inputs">
-          <input class="popup__input" type="text" name="name" placeholder="Имя"/>
-          <input class="popup__input" type="text" name="description" placeholder="О себе"/>
+          <div class="popup__input-wrapper">
+            <input
+              class="popup__input"
+              id="name-input"
+              type="text"
+              name="name"
+              placeholder="Имя"
+              data-error-message="Разрешены только кириллица, латиница, проблелы и дефисы"
+              pattern="^[\s\-a-zA-Zа-яА-ЯЁё]+$"
+              minlength="2"
+              maxlength="40"
+              required
+            >
+            <div class="name-input-error popup__input-error"></div>
+          </div>
+          <div class="popup__input-wrapper">
+            <input
+              class="popup__input"
+              id="about-input"
+              type="text"
+              name="description"
+              placeholder="О себе"
+              data-error-message="Разрешены только кириллица, латиница, проблелы и дефисы"
+              pattern="^[\s\-a-zA-Zа-яА-ЯЁё]+$"
+              minlength="2"
+              maxlength="200"
+              required
+            >
+            <div class="about-input-error popup__input-error"></div>
+          </div>
         </div>
         <button class="popup__submit-button">Сохранить</button>
       </form>
@@ -46,10 +74,36 @@
   <div class="popup" id="card-popup">
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form" action="#" name="addCard" method="post">
+      <form class="popup__form" action="#" name="addCard" method="post" novalidate>
         <div class="popup__form-inputs">
-          <input class="popup__input" type="text" name="name" placeholder="Название"/>
-          <input class="popup__input" type="text" name="link" placeholder="Ссылка на картинку"/>
+          <div class="popup__input-wrapper">
+            <input
+              class="popup__input"
+              id="image-title-input"
+              type="text"
+              name="name"
+              placeholder="Название"
+              data-error-message="Разрешены только кириллица, латиница, проблелы и дефисы"
+              pattern="^[\s\-a-zA-Zа-яА-ЯЁё]+$"
+              minlength="2"
+              maxlength="30"
+              required
+            >
+            <div class="image-title-input-error popup__input-error"></div>
+          </div>
+          <div class="popup__input-wrapper">
+            <input
+              class="popup__input"
+              id="image-url-input"
+              type="text"
+              name="link"
+              placeholder="Ссылка на картинку"
+              data-error-message="Должен быть URL"
+              pattern="(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])"
+              required
+            >
+            <div class="image-url-input-error popup__input-error"></div>
+          </div>
         </div>
         <button class="popup__submit-button">Сохранить</button>
       </form>
@@ -70,7 +124,7 @@
 
 <template id="element-template">
   <li class="element">
-    <img src="" alt="" class="element__image" />
+    <img src="" alt="" class="element__image"/>
     <div class="element__footer">
       <h2 class="element__title"></h2>
       <button type="button" class="element__button-trash" aria-label="удалить"></button>
@@ -78,7 +132,6 @@
     </div>
   </li>
 </template>
-
 
 
 </body>

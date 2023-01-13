@@ -1,0 +1,5 @@
+.popup__input-wrapper {
+  display: grid;
+  grid-template-rows: auto minmax(28px, auto);
+  gap: 4px;
+}

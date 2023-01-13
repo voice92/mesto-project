@@ -1,4 +1,7 @@
-import './styles/index.css';
+import '../styles/index.css';
+import {openPopup, closePopup} from './modal.js';
+import {enableValidation} from "./validate";
+import {createCard} from "./card";
 
 const profilePopup = document.querySelector('#popup-edit')
 const profilePopupTrigger = document.querySelector('.profile__button-edit')
@@ -14,16 +17,8 @@ const cardPopupForm = cardPopup.querySelector('form')
 const cardNameInput = cardPopup.querySelector('input[name="name"]')
 const cardLinkInput = cardPopup.querySelector('input[name="link"]')
 
-const imagePopup = document.querySelector('#img-popup')
-const popupImgElement = document.querySelector('.popup__img')
-const popupTitleElement = document.querySelector('.popup__img-text')
-
 const crossButtons = document.querySelectorAll('.popup__close-button')
-
 const cardsContainer = document.querySelector('.elements__grid-container')
-const cardTemplate = document.querySelector('#element-template')
-
-const POPUP_ACTIVE_CLASS_NAME = 'popup_opened'
 
 const initialCards = [
   {
@@ -42,7 +37,8 @@ const initialCards = [
     name: 'Камчатка',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
-  { name: 'Холмогорский район',
+  {
+    name: 'Холмогорский район',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
@@ -50,49 +46,6 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
-function openPopup(popup) {
-  popup.classList.add(POPUP_ACTIVE_CLASS_NAME)
-}
-
-function closePopup(popup) {
-  popup.classList.remove(POPUP_ACTIVE_CLASS_NAME)
-}
-
-function createCard(name, link) {
-  const element = cardTemplate.content.cloneNode(true)
-  const elementTitle = element.querySelector('.element__title')
-  const elementImage = element.querySelector('.element__image')
-  const elementDeleteButton = element.querySelector('.element__button-trash')
-  const elementLikeButton = element.querySelector('.element__button-like')
-
-  elementTitle.textContent = name
-  elementImage.src = link
-  elementImage.alt = name
-
-  elementDeleteButton.addEventListener('click', deleteElement)
-  elementLikeButton.addEventListener('click', toggleLike)
-  elementImage.addEventListener('click', openImagePopup)
-
-  return element
-}
-
-function deleteElement(event) {
-  event.target.closest('.element').remove()
-}
-
-function toggleLike(event) {
-  event.target.classList.toggle('element__button-like_liked')
-}
-
-function openImagePopup(event) {
-  const targetElement = event.target.closest('.element')
-  popupImgElement.src = event.target.src
-  popupImgElement.alt = event.target.alt
-
-  popupTitleElement.textContent = targetElement.querySelector('.element__title').textContent
-  openPopup(imagePopup)
-}
 
 initialCards.forEach(function (item) {
   const card = createCard(item.name, item.link)
@@ -136,3 +89,12 @@ profileForm.addEventListener('submit', function (event) {
 
   closePopup(profilePopup)
 })
+
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+});
