@@ -26,13 +26,13 @@ function isValid(formElement, inputElement, options) {
   }
 }
 
-function setEventListeners(form, formElement, options) {
+function setEventListeners(formElement, options) {
   const inputList = Array.from(formElement.querySelectorAll(options.inputSelector))
   const buttonElement = formElement.querySelector(options.submitButtonSelector)
 
   toggleButtonState(inputList, buttonElement, options)
 
-  form.addEventListener('reset', () => {
+  formElement.addEventListener('reset', () => {
     inputList.forEach(inputElement => {
       inputElement.value = ''
     })
@@ -67,6 +67,6 @@ export function enableValidation(options, form) {
   const formList = Array.from(document.querySelectorAll(options.formSelector))
 
   formList.forEach((formElement) => {
-    setEventListeners(form, formElement, options)
+    setEventListeners(formElement, options)
   })
 }

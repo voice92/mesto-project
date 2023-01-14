@@ -2,6 +2,14 @@ import '../styles/index.css';
 import {openPopup, closePopup} from './modal.js';
 import {enableValidation} from "./validate";
 import {createCard} from "./card";
+import {fetchCards, updateUser, addCard, updateAvatar} from './api';
+
+const profileAvatar = document.querySelector('.profile__avatar');
+const profileAvatarPopup = document.querySelector('#popup-edit_avatar')
+const profileAvatarPopupTrigger = document.querySelector('.profile__avatar-edit')
+const profileAvatarForm = profileAvatarPopup.querySelector('.popup__form')
+const profileAvatarLink = profileAvatarForm.querySelector('input[name="link"]')
+const profileAvatarSubmitButton = profileAvatarForm.querySelector('button[type="submit"]')
 
 const profilePopup = document.querySelector('#popup-edit')
 const profilePopupTrigger = document.querySelector('.profile__button-edit')
@@ -10,12 +18,14 @@ const profileDesc = document.querySelector('.profile__subtitle')
 const profileForm = profilePopup.querySelector('.popup__form')
 const profileNameInput = profileForm.querySelector('input[name="name"]')
 const profileDescInput = profileForm.querySelector('input[name="description"]')
+const profileSubmitButton = profileForm.querySelector('button[type="submit"]')
 
 const cardPopup = document.querySelector('#card-popup')
 const cardPopupTrigger = document.querySelector('.profile__button-add')
 const cardPopupForm = cardPopup.querySelector('form')
 const cardNameInput = cardPopup.querySelector('input[name="name"]')
 const cardLinkInput = cardPopup.querySelector('input[name="link"]')
+const cardSubmitButton = cardPopupForm.querySelector('button[type="submit"]')
 
 const crossButtons = document.querySelectorAll('.popup__close-button')
 const cardsContainer = document.querySelector('.elements__grid-container')
@@ -47,15 +57,48 @@ const initialCards = [
   }
 ];
 
-initialCards.forEach(function (item) {
-  const card = createCard(item.name, item.link)
+fetchCards()
+  .then(cards => {
+    cards.forEach(function (item) {
+      const card = createCard(item._id, item.name, item.link, item.likes.length)
+    
+      cardsContainer.append(card)
+    })
+  })
+  .catch(error => {
+    console.log(error)
+  })
 
-  cardsContainer.append(card)
-})
+function setLoading(submitButton) {
+  const sourceText = submitButton.textContent;
+  submitButton.textContent = 'Сохранение...';
+  return function () {
+    submitButton.textContent = sourceText;
+  }
+}
+
+profileAvatarPopupTrigger.addEventListener('click', function () {
+  openPopup(profileAvatarPopup);
+});
+
+profileAvatarForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  const removeLoading = setLoading(profileAvatarSubmitButton);
+
+  updateAvatar(profileAvatarLink.value)
+    .then(user => {
+      profileAvatar.src = user.avatar;
+      closePopup(profileAvatarPopup)
+      removeLoading();
+    })
+    .catch(error => {
+      console.log(error)
+    })
+});
 
 profilePopupTrigger.addEventListener('click', function () {
   openPopup(profilePopup)
-
 
   profileNameInput.value = profileTitle.textContent.trim()
   profileDescInput.value = profileDesc.textContent.trim()
@@ -74,23 +117,40 @@ crossButtons.forEach(function (button) {
 cardPopupForm.addEventListener('submit', function (event) {
   event.preventDefault()
 
-  const card = createCard(cardNameInput.value, cardLinkInput.value)
+  const removeLoading = setLoading(cardSubmitButton)
 
-  cardsContainer.prepend(card)
-  closePopup(cardPopup)
+  addCard(cardNameInput.value, cardLinkInput.value)
+    .then(updatedCard => {
+      const card = createCard(updatedCard.name, updatedCard.link)
 
-  // cardNameInput.value = ''
-  // cardLinkInput.value = ''
-  cardPopupForm.reset()
+      cardsContainer.prepend(card)
+      closePopup(cardPopup)
+
+      cardPopupForm.reset()
+      removeLoading();
+    })
+    .catch(error => {
+      console.log(error)
+    })
 })
 
 profileForm.addEventListener('submit', function (event) {
   event.preventDefault()
 
-  profileTitle.textContent = profileNameInput.value
-  profileDesc.textContent = profileDescInput.value
+  const removeLoading = setLoading(profileSubmitButton)
 
-  closePopup(profilePopup)
+  updateUser(profileNameInput.value, profileDescInput.value)
+    .then(user => {
+      profileTitle.textContent = user.name
+      profileDesc.textContent = user.about
+
+      closePopup(profilePopup)
+
+      removeLoading()
+    })
+    .catch(error => {
+      console.log(error)
+    })
 })
 
 enableValidation({
@@ -100,4 +160,4 @@ enableValidation({
   inactiveButtonClass: 'popup__submit-button_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active'
-}, cardPopupForm);
+});

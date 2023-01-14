@@ -13,7 +13,9 @@
 
 <main class="content">
   <section class="profile">
-    <img src="<%=require('../images/kusto.png')%>" alt="Аватар" class="profile__avatar"/>
+    <button class="profile__avatar-edit" type="button" title="Изменить аватар">
+      <img src="<%=require('../images/kusto.png')%>" alt="Аватар" class="profile__avatar"/>
+    </button>
     <div class="profile__info">
       <h1 class="profile__title">
                         <span class="profile__title-text">
@@ -66,7 +68,7 @@
             <div class="about-input-error popup__input-error"></div>
           </div>
         </div>
-        <button class="popup__submit-button">Сохранить</button>
+        <button class="popup__submit-button" type="submit">Сохранить</button>
       </form>
       <button class="popup__close-button" aria-label="Закрыть окно"></button>
     </div>
@@ -105,7 +107,7 @@
             <div class="image-url-input-error popup__input-error"></div>
           </div>
         </div>
-        <button class="popup__submit-button">Сохранить</button>
+        <button class="popup__submit-button" type="submit">Сохранить</button>
       </form>
       <button class="popup__close-button" aria-label="Закрыть окно"></button>
     </div>
@@ -114,6 +116,30 @@
     <div class="popup__img-container">
       <img class="popup__img" src="" alt="">
       <p class="popup__img-text"></p>
+      <button class="popup__close-button" aria-label="Закрыть окно"></button>
+    </div>
+  </div>
+  <div class="popup" id="popup-edit_avatar">
+    <div class="popup__container">
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="popup__form" action="#" name="profile_avatar" method="post" novalidate>
+        <div class="popup__form-inputs">
+          <div class="popup__input-wrapper">
+            <input
+              class="popup__input"
+              id="link-input"
+              type="text"
+              name="link"
+              placeholder="Ссылка на фотографию"
+              data-error-message="Должен быть URL"
+              pattern="(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])"
+              required
+            >
+            <div class="link-input-error popup__input-error"></div>
+          </div>
+        </div>
+        <button class="popup__submit-button" type="submit">Сохранить</button>
+      </form>
       <button class="popup__close-button" aria-label="Закрыть окно"></button>
     </div>
   </div>
@@ -129,6 +155,7 @@
       <h2 class="element__title"></h2>
       <button type="button" class="element__button-trash" aria-label="удалить"></button>
       <button class="element__button-like" type="button"></button>
+      <div class="element__likes"></div>
     </div>
   </li>
 </template>
