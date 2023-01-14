@@ -26,16 +26,22 @@ function isValid(formElement, inputElement, options) {
   }
 }
 
-function setEventListeners(formElement, options) {
+function setEventListeners(form, formElement, options) {
   const inputList = Array.from(formElement.querySelectorAll(options.inputSelector))
   const buttonElement = formElement.querySelector(options.submitButtonSelector)
 
   toggleButtonState(inputList, buttonElement, options)
 
+  form.addEventListener('reset', () => {
+    inputList.forEach(inputElement => {
+      inputElement.value = ''
+    })
+    toggleButtonState(inputList, buttonElement, options)
+  });
+
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
       isValid(formElement, inputElement, options)
-
       toggleButtonState(inputList, buttonElement, options)
     })
   })
@@ -57,10 +63,10 @@ function toggleButtonState(inputList, buttonElement, options) {
   }
 }
 
-export function enableValidation(options) {
+export function enableValidation(options, form) {
   const formList = Array.from(document.querySelectorAll(options.formSelector))
 
   formList.forEach((formElement) => {
-    setEventListeners(formElement, options)
+    setEventListeners(form, formElement, options)
   })
 }

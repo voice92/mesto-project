@@ -5,10 +5,11 @@ const popupTitleElement = document.querySelector('.popup__img-text')
 const POPUP_ACTIVE_CLASS_NAME = 'popup_opened'
 
 function onEscape(event) {
-  const openedPopup = document.querySelector(`.${POPUP_ACTIVE_CLASS_NAME}`)
-
-  if (openedPopup && event.key === 'Escape') {
-    closePopup(openedPopup)
+  if (event.key === 'Escape') {
+    const openedPopup = document.querySelector(`.${POPUP_ACTIVE_CLASS_NAME}`)
+    if (openedPopup) {
+      closePopup(openedPopup)
+    } 
   }
 }
 

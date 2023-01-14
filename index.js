@@ -106,7 +106,8 @@ profilePopupTrigger.addEventListener('click', function () {
 })
 
 cardPopupTrigger.addEventListener('click', function () {
-  openPopup(cardPopup)
+  openPopup(cardPopup);
+  disablecardPopupTrigger(validSetting, cardPopupTrigger);
 })
 
 crossButtons.forEach(function (button) {

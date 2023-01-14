@@ -56,6 +56,7 @@ initialCards.forEach(function (item) {
 profilePopupTrigger.addEventListener('click', function () {
   openPopup(profilePopup)
 
+
   profileNameInput.value = profileTitle.textContent.trim()
   profileDescInput.value = profileDesc.textContent.trim()
 })
@@ -77,8 +78,10 @@ cardPopupForm.addEventListener('submit', function (event) {
 
   cardsContainer.prepend(card)
   closePopup(cardPopup)
-  cardNameInput.value = ''
-  cardLinkInput.value = ''
+
+  // cardNameInput.value = ''
+  // cardLinkInput.value = ''
+  cardPopupForm.reset()
 })
 
 profileForm.addEventListener('submit', function (event) {
@@ -97,4 +100,4 @@ enableValidation({
   inactiveButtonClass: 'popup__submit-button_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active'
-});
+}, cardPopupForm);
