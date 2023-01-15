@@ -54,8 +54,10 @@ Promise.all([fetchUser(), fetchCards()])
 function setLoading(submitButton) {
   const sourceText = submitButton.textContent;
   submitButton.textContent = 'Сохранение...';
+  submitButton.disabled = true;
   return function () {
     submitButton.textContent = sourceText;
+    submitButton.disabled = false;
   }
 }
 
