@@ -28,9 +28,13 @@ import {enableValidation} from "./validate";
 import {createCard} from "./card";
 import {fetchUser, fetchCards, updateUser, addCard, updateAvatar} from './api';
 
+let userId;
+
 Promise.all([fetchUser(), fetchCards()])
   .then(([user, cards]) => {
     if (user) {
+      userId = user._id;
+
       const avatarEl = document.querySelector('.profile__avatar');
       const nameEl = document.querySelector('.profile__title-text');
       const aboutEl = document.querySelector('.profile__subtitle');
@@ -41,7 +45,7 @@ Promise.all([fetchUser(), fetchCards()])
     }
     if (cards) {
       cards.forEach(function (item) {
-        const card = createCard(user._id, item)
+        const card = createCard(userId, item)
       
         cardsContainer.append(card)
       })
@@ -107,7 +111,7 @@ cardPopupForm.addEventListener('submit', function (event) {
 
   addCard(cardNameInput.value, cardLinkInput.value)
     .then(updatedCard => {
-      const card = createCard(updatedCard.name, updatedCard.link)
+      const card = createCard(userId, updatedCard)
 
       cardsContainer.prepend(card)
       closePopup(cardPopup)
