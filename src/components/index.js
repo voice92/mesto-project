@@ -41,7 +41,7 @@ Promise.all([fetchUser(), fetchCards()])
     }
     if (cards) {
       cards.forEach(function (item) {
-        const card = createCard(item._id, item.name, item.link, item.likes.length)
+        const card = createCard(user._id, item)
       
         cardsContainer.append(card)
       })

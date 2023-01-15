@@ -61,7 +61,7 @@ function removeLike(id, likes) {
   elementLikeButton.classList.remove('element__button-like_liked');
 }
 
-export function createCard(id, name, link, likes) {
+export function createCard(myId, data) {
   const element = cardTemplate.content.cloneNode(true)
   const elementTitle = element.querySelector('.element__title')
   const elementImage = element.querySelector('.element__image')
@@ -69,15 +69,24 @@ export function createCard(id, name, link, likes) {
   const elementLikeButton = element.querySelector('.element__button-like')
   const elementLikeCount = element.querySelector('.element__likes')
 
-  element.firstElementChild.dataset.id = id;
-  elementTitle.textContent = name
-  elementImage.src = link
-  elementImage.alt = name
-  elementLikeButton.dataset.id = id
-  elementLikeCount.textContent = likes
-  elementDeleteButton.dataset.id = id
+  element.firstElementChild.dataset.id = data._id
+  elementTitle.textContent = data.name
+  elementImage.src = data.link
+  elementImage.alt = data.name
+  elementLikeButton.dataset.id = data._id
+  elementLikeCount.textContent = data.likes.length
+  elementDeleteButton.dataset.id = data._id
 
-  elementDeleteButton.addEventListener('click', deleteElement)
+  if (data.likes.some(like => like._id === myId)) {
+    elementLikeButton.classList.add('element__button-like_liked');
+  }
+
+  if (myId === data.owner._id) {
+    elementDeleteButton.addEventListener('click', deleteElement)
+  } else {
+    elementDeleteButton.style.display = 'none'
+  }
+  
   elementLikeButton.addEventListener('click', toggleLike)
   elementImage.addEventListener('click', openImagePopup)
 
