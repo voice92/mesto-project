@@ -1,0 +1,8 @@
+.element__like-container {
+    position: absolute;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 3px;
+    right: 20px;
+    justify-items: center;
+}

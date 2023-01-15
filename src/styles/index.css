@@ -26,6 +26,7 @@
 @import url(./blocks/elements/__grid-container/elements__gtid-container.css);
 @import url(./blocks/element/__footer/element__footer.css);
 @import url(./blocks/element/__likes/element__likes.css);
+@import url(./blocks/element/__like-container/element__like-container.css);
 
 @import url(./blocks/footer/footer.css);
 @import url(./blocks/footer/__copyright/footer__copyright.css);
