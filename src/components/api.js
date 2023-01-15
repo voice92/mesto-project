@@ -21,7 +21,7 @@ function apiFetch(method, endpoint, body) {
         });
 }
 
-function fetchUser() {
+export function fetchUser() {
     return apiFetch('GET', '/users/me');
 }
 
@@ -52,17 +52,3 @@ export function putLike(id) {
 export function deleteLike(id) {
     return apiFetch('DELETE', `/cards/likes/${id}`);
 }
-
-fetchUser()
-    .then(user => {
-        const avatarEl = document.querySelector('.profile__avatar');
-        const nameEl = document.querySelector('.profile__title-text');
-        const aboutEl = document.querySelector('.profile__subtitle');
-
-        avatarEl.src = user.avatar;
-        nameEl.textContent = user.name;
-        aboutEl.textContent = user.about;
-    })
-    .catch(error => {
-        console.error(error);
-    });

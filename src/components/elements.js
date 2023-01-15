@@ -1,0 +1,25 @@
+export const profileAvatar = document.querySelector('.profile__avatar');
+export const profileAvatarPopup = document.querySelector('#popup-edit_avatar')
+export const profileAvatarForm = profileAvatarPopup.querySelector('.popup__form')
+export const profileAvatarLink = profileAvatarForm.querySelector('input[name="link"]')
+export const profileAvatarPopupTrigger = document.querySelector('.profile__avatar-edit')
+export const profileAvatarSubmitButton = profileAvatarForm.querySelector('button[type="submit"]')
+
+export const profilePopup = document.querySelector('#popup-edit')
+export const profilePopupTrigger = document.querySelector('.profile__button-edit')
+export const profileTitle = document.querySelector('.profile__title-text')
+export const profileDesc = document.querySelector('.profile__subtitle')
+export const profileForm = profilePopup.querySelector('.popup__form')
+export const profileNameInput = profileForm.querySelector('input[name="name"]')
+export const profileDescInput = profileForm.querySelector('input[name="description"]')
+export const profileSubmitButton = profileForm.querySelector('button[type="submit"]')
+
+export const cardPopup = document.querySelector('#card-popup')
+export const cardPopupTrigger = document.querySelector('.profile__button-add')
+export const cardPopupForm = cardPopup.querySelector('form')
+export const cardNameInput = cardPopup.querySelector('input[name="name"]')
+export const cardLinkInput = cardPopup.querySelector('input[name="link"]')
+export const cardSubmitButton = cardPopupForm.querySelector('button[type="submit"]')
+
+export const crossButtons = document.querySelectorAll('.popup__close-button')
+export const cardsContainer = document.querySelector('.elements__grid-container')
